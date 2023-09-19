@@ -1,0 +1,24 @@
+.Date{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid aliceblue;
+    border-radius: 12px;
+    padding: 0.5rem;
+    background-color: #000;
+}
+
+.Date__Month{
+    font-weight: bold;
+    font-size: 12px;
+
+}
+.Date__Day{
+    font-weight: bold;
+    font-size: 24px;
+
+}
+.Date__Year{
+    font-weight: bold;
+    font-size: 12px;
+
+}

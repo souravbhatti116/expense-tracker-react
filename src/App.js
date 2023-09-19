@@ -1,22 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import '../src/style/Card.css'
+import { useState } from 'react';
+import './components/ExpenseItem'
+import ExpenseItem from './components/ExpenseItem';
+import NewExpense from './components/NewExpense';
+import Card from './components/Card';
 
 function App() {
+  const [listOfExpense, setListOfExpense] = useState([]);
+
+
+
+
+  const addExpenseHandler = (expense)=>{
+    console.log(expense)
+    setListOfExpense((prevExpense) => [ expense,...prevExpense])
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+        <Card>
+          <NewExpense onAddExpenseHandler = {addExpenseHandler} />
+          <ul>
+            {listOfExpense.map((expense) => {
+              return <li key={Math.random().toString()}>
+                        <ExpenseItem title={expense.enteredTitle} price={expense.enteredAmount} date={expense.enteredDate} />
+                    </li>
+            })
+            }
+          </ul>
+        </Card>
       </header>
     </div>
   );
